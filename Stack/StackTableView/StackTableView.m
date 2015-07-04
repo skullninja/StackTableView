@@ -7,6 +7,7 @@
 //
 
 #import "StackTableView.h"
+#import "StackTableViewCell.h"
 
 @interface StackTableView ()<UITableViewDelegate,UITableViewDataSource>
 @end
@@ -100,30 +101,22 @@
     
     NSIndexPath *index = [paths firstObject];
     if ([self indexPathForRowAtPoint:scrollView.contentOffset]) {
-        UITableViewCell*cell = [self cellForRowAtIndexPath:index];
-        if (goastIndex != index || index.row == 0) {
-            NSLog(@"capture");
-            _goastView.image = [self imageFromView:cell];
+        
+        StackTableViewCell *cell = (id)[self cellForRowAtIndexPath:index];
+        if (!cell.isLoading) {
+            if (goastIndex != index || index.row == 0) {
+                _goastView.image = [cell snapshot];
+            }
+            goastIndex = index;
+            cell.alpha = 0;
         }
-        cell.alpha = 0;
-        goastIndex = index;
-    }else{
+    } else {
         _goastView.image = nil;
     }
     
     if ([_mDelegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
         [_mDelegate scrollViewDidScroll:scrollView];
     }
-}
-
-- (UIImage*)imageFromView:(UIView*)view{
-    UIImage* image;
-    UIGraphicsBeginImageContextWithOptions(view.frame.size, true, 2.0f);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [view.layer renderInContext:context];
-    image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
 }
 
 @end

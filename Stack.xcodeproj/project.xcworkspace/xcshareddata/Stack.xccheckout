@@ -10,6 +10,8 @@
 	<string>Stack</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>5391E122CDB6E7C6112F063C8DED142EE3670DD7</key>
+		<string>https://github.com/skullninja/Levitee.git</string>
 		<key>84694976197C747D20B0EBB6A4CD970B446E17AD</key>
 		<string>https://github.com/noppefoxwolf/StackTableView.git</string>
 	</dict>
@@ -17,6 +19,8 @@
 	<string>Stack.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>5391E122CDB6E7C6112F063C8DED142EE3670DD7</key>
+		<string>../../../Levitee</string>
 		<key>84694976197C747D20B0EBB6A4CD970B446E17AD</key>
 		<string>../..</string>
 	</dict>
@@ -28,6 +32,14 @@
 	<string>84694976197C747D20B0EBB6A4CD970B446E17AD</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5391E122CDB6E7C6112F063C8DED142EE3670DD7</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Levitee</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

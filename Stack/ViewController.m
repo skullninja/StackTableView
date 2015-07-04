@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "StackTableViewCell.h"
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>{
     NSMutableArray*images;
@@ -37,11 +38,16 @@
 #pragma mark - UITableViewDelegate and DataSource
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell*cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    
+    StackTableViewCell *cell = [[StackTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([StackTableViewCell class])];
     
     UIImageView*iv = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200)];
     iv.backgroundColor = [UIColor redColor];
     iv.image = images[indexPath.row%7];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        cell.isLoading = NO; // Fake loading
+    });
+
     [cell.contentView addSubview:iv];
     
     UILabel*label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2, 0, self.view.bounds.size.width, 44)];
@@ -50,7 +56,7 @@
     [label setTextColor: [UIColor whiteColor]];
     label.font =[UIFont fontWithName:@"AvenirNextCondensed-Bold" size:25];
     [cell.contentView addSubview: label];
-    
+
     return cell;
 }
 
